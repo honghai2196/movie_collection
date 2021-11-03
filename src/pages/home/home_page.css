@@ -25,8 +25,26 @@
 }
 
 .movie-info .movie-rating {
-    color: green;
+    background-color: #22254b;
+    border-radius: 5px;
+    padding: 0.5rem;
     font-weight: bold;
+}
+
+.movie-rating.green {
+    color: green
+}
+
+.movie-rating.yellow {
+    color: yellow
+}
+
+.movie-rating.orange {
+    color: orange
+}
+
+.movie-rating.red {
+    color: red
 }
 
 .movie-over {

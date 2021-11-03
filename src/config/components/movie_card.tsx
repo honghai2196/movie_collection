@@ -1,43 +1,50 @@
-import { Box, Button, Card, Grid, Typography } from "@material-ui/core"
-import { withStyles } from "@material-ui/styles"
-import { memo, useCallback } from "react"
-import { useHistory } from "react-router"
+import { Box, Grid, Typography } from "@material-ui/core"
 import { Movie } from "../../domain/movie_repository/model/movie_model"
 import Image from "material-ui-image"
-import { typography } from "@material-ui/system"
+import MovieHover from "./movie_hover"
+import { useHistory } from "react-router"
 
-const MovieCard = (movie: Movie) => {            
+const setVoteClass = (vote: string) => {
+    if (parseFloat(vote) > 9) {
+        return "green"
+    }
+
+    if (parseFloat(vote) > 8.5) {
+        return "yellow"
+    }
+
+    if (parseFloat(vote) > 8) {
+        return "orange"
+    }
+
+    return "red"
+}
+
+const MovieCard = (movie: Movie) => {
+    const history = useHistory()
+
+    function onMovieClicked() {
+        history.push("/detail", movie)
+    }
+
     return (
         <Grid item>
-            <Box className="movie">
-                <Image src={movie.image} alt={movie.title + " (" + movie.year + ")"} />
+            <Box className={"movie " + movie.id} onClick={ onMovieClicked } >
+                <Image src={movie.image} 
+                    alt={movie.title + " (" + movie.year + ")"} />
                 <Box className="movie-info">
-                    <Typography variant="body1" className="movie-title">{movie.title}</Typography>
-                    <Box display="inline" className="movie-rating">{movie.imDbRating}</Box>
+                    <Typography variant="body1" className="movie-title">
+                        { movie.title }
+                    </Typography>
+                    <Box display="inline" className={`movie-rating ${setVoteClass(movie.imDbRating)}`}>
+                        { movie.imDbRating }
+                    </Box>
                 </Box>
                     
-                <Box className="movie-over">
-                    <Typography variant="h5">Overview:</Typography>
-                    <Typography>{ movie.title }</Typography>
-                    <Typography>{ "Publish year: " + movie.year }</Typography>
-                    <Typography>{ "Casts: " + movie.crew }</Typography>
-                    <Typography>{ "IMDB Rating: " + movie.imDbRating }</Typography>
-                    <Typography>{ "IMDB Rating Count: " + movie.imDbRatingCount }</Typography>
-                </Box>
+                <MovieHover {...movie} />
             </Box>
         </Grid>
     )
-    
-    
-
-    // return (
-    //     <Card className={props.id}>
-    //         <Box p={1}>
-    //             <Button onClick={onClick}>{showImageGrid}</Button>
-    //         </Box>
-    //     </Card>
-    // )
 }
 
-// export default withStyles(styles)(memo(MovieCard))
 export default MovieCard
