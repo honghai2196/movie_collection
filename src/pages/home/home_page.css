@@ -1,70 +1,70 @@
 .movie {
-    background-color: #373b69;
-    border-radius: 10px;
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    position: relative;
-    margin: 1rem;
-    width: 300px;
+  background-color: #373b69;
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  margin: 1rem;
+  width: 300px;
 }
 
 .movie img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 .movie-info {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
 }
 
 .movie-info .movie-title {
-    color: rgb(255, 255, 255);
-    margin: 0;
+  color: rgb(255, 255, 255);
+  margin: 0;
 }
 
 .movie-info .movie-rating {
-    background-color: #22254b;
-    border-radius: 5px;
-    padding: 0.5rem;
-    font-weight: bold;
+  background-color: #22254b;
+  border-radius: 5px;
+  padding: 0.5rem;
+  font-weight: bold;
 }
 
 .movie-rating.green {
-    color: green
+  color: green;
 }
 
 .movie-rating.yellow {
-    color: yellow
+  color: yellow;
 }
 
 .movie-rating.orange {
-    color: orange
+  color: orange;
 }
 
 .movie-rating.red {
-    color: red
+  color: red;
 }
 
 .movie-over {
-    background-color: white;
-    color: black;
-    padding: 1rem;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    overflow: auto;
-    max-height: 100%;
-    transform: translateY(100%);
-    transition: transform 0.3s ease-in-out;
+  background-color: white;
+  color: black;
+  padding: 1rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: auto;
+  max-height: 100%;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out;
 }
 
 .movie-over h5 {
-    font-weight: bolder;
+  font-weight: bolder;
 }
 
 .movie:hover .movie-over {
-    transform: translateY(0%);
+  transform: translateY(0%);
 }
