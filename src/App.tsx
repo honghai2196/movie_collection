@@ -1,13 +1,14 @@
-import React, { Fragment, lazy, Suspense, useEffect, useState } from 'react';
-import './App.css';
+import React, { Fragment, lazy, Suspense, } from "react"
+import "./App.css"
 import {
   BrowserRouter as Router,
   Switch,
   Route
-} from "react-router-dom";
-import { CssBaseline } from '@material-ui/core';
+} from "react-router-dom"
+import { CssBaseline } from "@material-ui/core"
+import MovieDetailPage from "./pages/movie_detail/movie_detail_page"
 
-const HomePage = lazy(() => import("./pages/home/home_page"));
+const HomePage = lazy(() => import("./pages/home/home_page"))
 
 function App() {
   return (
@@ -20,30 +21,13 @@ function App() {
               <HomePage />
             </Route>
             <Route path="/detail">
-              {/* <Detail /> */}
+              <MovieDetailPage />
             </Route>
           </Switch>
         </Suspense>
       {/* </MuiThemeProvider> */}
     </Router>
   )
-
-  // const [movies, setMovies] = useState([])
-
-  // useEffect(() => {
-  //   getAllMovies().then(data => {
-  //     // console.log(data)
-  //     setMovies(data)
-  //   })
-  // }, [])
-
-  // console.log(movies)
-
-  // return (
-  //   <div>
-  //     { movies.length > 0 && movies.map(() => <MovieSample />) }
-  //   </div>
-  // )
 }
 
 export default App;

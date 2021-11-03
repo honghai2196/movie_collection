@@ -1,5 +1,5 @@
 import { Box, Grid, Typography } from "@material-ui/core"
-import { Movie } from "../../domain/movie_repository/model/movie_model"
+import { Movie } from "../../../domain/movie_repository/model/movie_model"
 import Image from "material-ui-image"
 import MovieHover from "./movie_hover"
 import { useHistory } from "react-router"

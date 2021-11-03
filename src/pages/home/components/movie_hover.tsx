@@ -1,5 +1,5 @@
 import { Box, Typography } from "@material-ui/core";
-import { Movie } from "../../domain/movie_repository/model/movie_model";
+import { Movie } from "../../../domain/movie_repository/model/movie_model";
 
 const MovieHover = (movie: Movie) => {
     return (
