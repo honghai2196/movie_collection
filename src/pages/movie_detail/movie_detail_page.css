@@ -1,0 +1,38 @@
+.movie-content-wrapper {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.image-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+img {
+  width: auto;
+  height: 350px;
+}
+
+.movie-title {
+  font-weight: bolder;
+}
+
+.icon p {
+  font-weight: bold;
+  color: black;
+}
+
+.icon-left path {
+  color: orange;
+}
+
+.icon-right path {
+  color: blue;
+}
+
+.movie-genre p {
+  color: gray;
+  font-weight: bolder;
+}

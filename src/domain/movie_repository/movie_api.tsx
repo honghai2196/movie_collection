@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const API_KEY = "k_fb3s2ftl"
+const API_KEY = "k_wc75wv5q"
 const MOVIE_BASE_URL = "https://imdb-api.com/en/API/Top250Movies/" + API_KEY
 
 export const getAllMovies = async () => {

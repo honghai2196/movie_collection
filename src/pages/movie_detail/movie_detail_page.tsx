@@ -1,10 +1,4 @@
-import {
-  Box,
-  FormControl,
-  MenuItem,
-  NativeSelect,
-  Select,
-} from "@material-ui/core"
+import { Box, Divider, Grid } from "@material-ui/core"
 import React, { useEffect } from "react"
 import { useState } from "react"
 import { useLocation } from "react-router"
@@ -12,13 +6,14 @@ import {
   MovieInfo,
   MovieInfoProps,
 } from "../../domain/movie_repository/model/movie_info_model"
-import { Movie } from "../../domain/movie_repository/model/movie_model"
 import { fetchMovieInfo } from "../../domain/movie_repository/movie_api"
+import "./movie_detail_page.css"
+import OverviewInfo from "./components/overview_info"
 
 function MovieDetailPage(props: any) {
-  const movie = useLocation<Movie>()
+  const movie = useLocation<MovieInfo>()
 
-  const id = (movie.state as Movie).id
+  const id = (movie.state as MovieInfo).id
   const [movieInfo, setMovieInfo] = useState<MovieInfo>()
 
   const getMovieInfo = async () => {
@@ -35,34 +30,37 @@ function MovieDetailPage(props: any) {
     return
   }, [])
 
-  const languages = movieInfo?.languageList ?? ["N/A"]
-
-  const [language, setLanguage] = useState(languages[0])
-
-  const onSelectorChanged = (event) => {
-    setLanguage(event.target.value)
-  }
-
   return (
     <React.Fragment>
-      <Box>
-        <FormControl>
-          <NativeSelect
-            disableUnderline={false}
-            className="selector subtitle"
-            defaultValue={language}
-            onChange={onSelectorChanged}
-            inputProps={{
-              name: "country",
-              id: "uncontrolled-native",
-            }}
-          >
-            {languages.map((item) => (
-              <option value={item.key}>{item.value}</option>
-            ))}
-          </NativeSelect>
-        </FormControl>
+      <Box className="movie-content-wrapper">
+        <Grid container spacing={4}>
+          <Grid item className="image-wrapper" xs={4}>
+            <img
+              src={movieInfo?.image ?? ""}
+              alt={movieInfo?.fullTitle ?? ""}
+            />
+          </Grid>
+          <Grid item className="overview-wrapper" md={8}>
+            <OverviewInfo {...(movieInfo as MovieInfo)} />
+          </Grid>
+          <Divider />
+          <Grid container xs={8} spacing={2}>
+            <Grid item xs={4}>
+              DIRECTED BY
+            </Grid>
+            <Grid item xs={4}>
+              {movieInfo?.directors}
+            </Grid>
+            <Grid item xs={3}>
+              WRITTEN BY
+            </Grid>
+            <Grid item xs={3}>
+              {movieInfo?.writers}
+            </Grid>
+          </Grid>
+        </Grid>
       </Box>
+      {/* <SubtitleSelector {...(movieInfo as MovieInfo)} /> */}
     </React.Fragment>
   )
 }
