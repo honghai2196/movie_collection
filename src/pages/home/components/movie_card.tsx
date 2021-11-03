@@ -1,30 +1,30 @@
-import { Box, Grid, Typography } from "@material-ui/core";
-import { Movie } from "../../../domain/movie_repository/model/movie_model";
-import Image from "material-ui-image";
-import MovieHover from "./movie_hover";
-import { useHistory } from "react-router";
+import { Box, Grid, Typography } from "@material-ui/core"
+import { Movie } from "../../../domain/movie_repository/model/movie_model"
+import Image from "material-ui-image"
+import MovieHover from "./movie_hover"
+import { useHistory } from "react-router"
 
 const setVoteClass = (vote: string) => {
   if (parseFloat(vote) > 9) {
-    return "green";
+    return "green"
   }
 
   if (parseFloat(vote) > 8.5) {
-    return "yellow";
+    return "yellow"
   }
 
   if (parseFloat(vote) > 8) {
-    return "orange";
+    return "orange"
   }
 
-  return "red";
-};
+  return "red"
+}
 
 const MovieCard = (movie: Movie) => {
-  const history = useHistory();
+  const history = useHistory()
 
   function onMovieClicked() {
-    history.push("/detail", movie);
+    history.push("/detail", movie)
   }
 
   return (
@@ -46,7 +46,7 @@ const MovieCard = (movie: Movie) => {
         <MovieHover {...movie} />
       </Box>
     </Grid>
-  );
-};
+  )
+}
 
-export default MovieCard;
+export default MovieCard

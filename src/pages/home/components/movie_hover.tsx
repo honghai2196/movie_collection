@@ -1,5 +1,5 @@
-import { Box, Typography } from "@material-ui/core";
-import { Movie } from "../../../domain/movie_repository/model/movie_model";
+import { Box, Typography } from "@material-ui/core"
+import { Movie } from "../../../domain/movie_repository/model/movie_model"
 
 const MovieHover = (movie: Movie) => {
   return (
@@ -12,7 +12,7 @@ const MovieHover = (movie: Movie) => {
       <Typography>{"IMDB Rating: " + movie.imDbRating}</Typography>
       <Typography>{"IMDB Rating Count: " + movie.imDbRatingCount}</Typography>
     </Box>
-  );
-};
+  )
+}
 
-export default MovieHover;
+export default MovieHover

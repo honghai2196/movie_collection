@@ -1,7 +1,7 @@
-import axios from "axios";
+import axios from "axios"
 
-const API_KEY = "k_fb3s2ftl";
-const MOVIE_BASE_URL = "https://imdb-api.com/en/API/Top250Movies/" + API_KEY;
+const API_KEY = "k_fb3s2ftl"
+const MOVIE_BASE_URL = "https://imdb-api.com/en/API/Top250Movies/" + API_KEY
 
 export const getAllMovies = async () => {
   try {
@@ -9,16 +9,15 @@ export const getAllMovies = async () => {
       headers: {
         Accept: "application/json",
       },
-    });
+    })
 
-    return response.data.items;
+    return response.data.items
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
-const MOVIE_INFO_BASE_URL =
-  "https://imdb-api.com/en/API/Title/" + API_KEY + "/";
+const MOVIE_INFO_BASE_URL = "https://imdb-api.com/en/API/Title/" + API_KEY + "/"
 
 export const fetchMovieInfo = async (id: string) => {
   try {
@@ -26,10 +25,10 @@ export const fetchMovieInfo = async (id: string) => {
       headers: {
         Accept: "application/json",
       },
-    });
+    })
 
-    return response.data;
+    return response.data
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}

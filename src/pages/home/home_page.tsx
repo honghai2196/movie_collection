@@ -1,26 +1,26 @@
-import React, { useState, useEffect } from "react";
-import { getAllMovies } from "../../domain/movie_repository/movie_api";
+import React, { useState, useEffect } from "react"
+import { getAllMovies } from "../../domain/movie_repository/movie_api"
 import {
   MovieProps,
   Movie,
-} from "../../domain/movie_repository/model/movie_model";
-import { Box, Grid } from "@material-ui/core";
-import MovieCard from "./components/movie_card";
-import "./home_page.css";
+} from "../../domain/movie_repository/model/movie_model"
+import { Box, Grid } from "@material-ui/core"
+import MovieCard from "./components/movie_card"
+import "./home_page.css"
 
 function HomePage() {
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [movies, setMovies] = useState<Movie[]>([])
 
   const getMovies = async () => {
-    const moviesResponse: [MovieProps] = await getAllMovies();
-    const listMovies = moviesResponse.map((item) => new Movie(item));
+    const moviesResponse: [MovieProps] = await getAllMovies()
+    const listMovies = moviesResponse.map((item) => new Movie(item))
 
-    setMovies(listMovies);
-  };
+    setMovies(listMovies)
+  }
 
   useEffect(() => {
-    getMovies();
-  }, []);
+    getMovies()
+  }, [])
 
   return (
     <React.Fragment>
@@ -32,7 +32,7 @@ function HomePage() {
         </Grid>
       </Box>
     </React.Fragment>
-  );
+  )
 }
 
-export default React.memo(HomePage);
+export default React.memo(HomePage)
