@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import { getAllMovies } from './domain/movie_repository/movie_api';
+import MovieSample from './config/components/movie_sample';
 
 function App() {
+  const [movies, setMovies] = useState([])
+
+  useEffect(() => {
+    getAllMovies().then(data => {
+      console.log(data)
+      setMovies(data)
+    })
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      { movies.length > 0 && movies.map(() => <MovieSample />) }
     </div>
-  );
+  )
 }
 
 export default App;
