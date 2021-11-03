@@ -11,9 +11,7 @@ function HomePage() {
 
     const getMovies = async () => {
         const moviesResponse: [MovieProps] = await getAllMovies()
-        const listMovies = moviesResponse.map(item => {
-            return new Movie(item)
-        })
+        const listMovies = moviesResponse.map(item => new Movie(item))
 
         setMovies(listMovies.splice(0, 30))
         setAllMovies(listMovies)
@@ -31,7 +29,7 @@ function HomePage() {
         <React.Fragment>
             <Box p={2}>
                 <Grid container spacing={2}>
-                    {movies.map((movie: Movie) => 
+                    {movies.map(movie => 
                         <MovieCard key={movie.id} {...movie} />)}
                 </Grid>
             </Box>

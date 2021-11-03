@@ -2,28 +2,31 @@ export interface MovieProps{
     id: string
     rank: string
     title: string
-    publish_year: string
+    year: string
     image: string
-    casts: string
-    imdbRating: string
+    crew: string
+    imDbRating: string
+    imDbRatingCount: string
 }
 
 export class Movie {
     public id: string
     public rank: string
     public title: string
-    public publish_year: string
+    public year: string
     public image: string
-    public casts: string
-    public imdbRating: string
+    public crew: string
+    public imDbRating: string
+    public imDbRatingCount: string
 
     constructor(props: MovieProps) {
         this.id = props.id
         this.rank = props.rank
         this.title = props.title
-        this.publish_year = props.publish_year
+        this.year = props.year
         this.image = props.image
-        this.casts = props.casts
-        this.imdbRating = props.imdbRating
+        this.crew = props.crew
+        this.imDbRating = props.imDbRating
+        this.imDbRatingCount = props.imDbRatingCount
     }
 }
