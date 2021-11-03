@@ -3,49 +3,31 @@ import { withStyles } from "@material-ui/styles"
 import { memo, useCallback } from "react"
 import { useHistory } from "react-router"
 import { Movie } from "../../domain/movie_repository/model/movie_model"
+import Image from "material-ui-image"
+import { typography } from "@material-ui/system"
 
-// const styles = (theme: any) => ({
-//     card: {
-//         backgroundColor: "#22254b",
-//         margin: 10,//theme.spacing(1),
-//         boxShadow: 5,//theme.shadows[4],
-//     },
-//     title: {
-//         backgroundColor: "white"
-//     },
-//     detail: {
-//         backgroundColor: "transparent",
-//         color: "white"
-//     },
-//     bodyDetail: {
-//         padding: 5
-//     }
-// })
-
-const MovieCard = (movie: Movie) => {
-    // const { classes } = props
-    // console.log(props.image)
-    // const history = useHistory()
-
-    // function onClick() {
-    //     history.push("/detail", props)
-    // }
-
-    
-            
-    return <Grid item md={9} >
-        <div className={"movie-" + movie.id}>
-            <div className="movie-header"></div>
-            <img style= {{height: 400}}
-                src= {movie.image}
-                alt= {movie.title + "(" + movie.year + ")"} />
+const MovieCard = (movie: Movie) => {            
+    return (
+        <Grid item>
+            <Box className="movie">
+                <Image src={movie.image} alt={movie.title + " (" + movie.year + ")"} />
+                <Box className="movie-info">
+                    <Typography variant="body1" className="movie-title">{movie.title}</Typography>
+                    <Box display="inline" className="movie-rating">{movie.imDbRating}</Box>
+                </Box>
                     
-            <div className="movie-over">
-                <Typography variant="h2">Overview</Typography>
-                <Typography variant="body1">{movie.title}</Typography>
-            </div>
-        </div>
-    </Grid>
+                <Box className="movie-over">
+                    <Typography variant="h5">Overview:</Typography>
+                    <Typography>{ movie.title }</Typography>
+                    <Typography>{ "Publish year: " + movie.year }</Typography>
+                    <Typography>{ "Casts: " + movie.crew }</Typography>
+                    <Typography>{ "IMDB Rating: " + movie.imDbRating }</Typography>
+                    <Typography>{ "IMDB Rating Count: " + movie.imDbRatingCount }</Typography>
+                </Box>
+            </Box>
+        </Grid>
+    )
+    
     
 
     // return (

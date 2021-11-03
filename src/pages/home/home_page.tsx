@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Component } from 'react'
 import { getAllMovies } from '../../domain/movie_repository/movie_api'
 import { MovieProps, Movie } from '../../domain/movie_repository/model/movie_model'
 import { Box, Grid } from '@material-ui/core'
 import MovieCard from '../../config/components/movie_card'
+import './home_page.css'
 
 function HomePage() {
     // Declare state
