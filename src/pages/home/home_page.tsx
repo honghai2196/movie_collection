@@ -11,14 +11,14 @@ import "./home_page.css"
 function HomePage() {
   const [movies, setMovies] = useState<Movie[]>([])
 
-  const getMovies = async () => {
-    const moviesResponse: [MovieProps] = await getAllMovies()
-    const listMovies = moviesResponse.map((item) => new Movie(item))
-
-    setMovies(listMovies)
-  }
-
   useEffect(() => {
+    const getMovies = async () => {
+      const moviesResponse: [MovieProps] = await getAllMovies()
+      const listMovies = moviesResponse.map((item) => new Movie(item))
+
+      setMovies(listMovies)
+    }
+
     getMovies()
   }, [])
 

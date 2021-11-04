@@ -1,11 +1,4 @@
-import {
-  Box,
-  Grid,
-  Hidden,
-  makeStyles,
-  Theme,
-  Typography,
-} from "@material-ui/core"
+import { Box, Grid, makeStyles, Theme, Typography } from "@material-ui/core"
 import { Movie } from "../../../domain/movie_repository/model/movie_model"
 import Image from "material-ui-image"
 import MovieHover from "./movie_hover"
