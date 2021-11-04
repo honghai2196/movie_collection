@@ -5,7 +5,6 @@ import {
   Grid,
   makeStyles,
   Theme,
-  Typography,
 } from "@material-ui/core"
 import React, { Fragment, useEffect, useState } from "react"
 import { useLocation } from "react-router"
@@ -17,7 +16,6 @@ import { fetchMovieInfo } from "../../domain/movie_repository/movie_api"
 import OverviewInfo from "./components/overview_info"
 import DetailInfo from "./components/detail_info"
 import { Movie } from "../../domain/movie_repository/model/movie_model"
-import { width } from "@material-ui/system"
 
 const useStyles = makeStyles((theme: Theme) => ({
   movieContentWrapper: {},
