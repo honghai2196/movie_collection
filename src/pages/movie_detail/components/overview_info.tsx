@@ -1,44 +1,81 @@
-import { Box, Grid, Typography } from "@material-ui/core"
+import { Box, Grid, makeStyles, Theme, Typography } from "@material-ui/core"
 import { Score, Star } from "@material-ui/icons"
-import { MovieInfo } from "../../../domain/movie_repository/model/movie_info_model"
+import { MovieInfoProps } from "../../../domain/movie_repository/model/movie_info_model"
 
-const OverviewInfo = (movieInfo: MovieInfo) => {
+const useStyles = makeStyles((theme: Theme) => ({
+  movieTitle: {
+    fontWeight: "bolder",
+  },
+  icon: {
+    "& p": {
+      fontWeight: "bold",
+      color: "black",
+    },
+  },
+  iconLeft: {
+    "& path": {
+      color: "orange",
+    },
+  },
+  iconRight: {
+    "& path": {
+      color: "blue",
+    },
+  },
+  movieGenre: {
+    "& p": {
+      color: "gray",
+      fontWeight: "bolder",
+    },
+  },
+}))
+
+const OverviewInfo = ({
+  title,
+  year,
+  runtimeStr,
+  imDbRating,
+  imDbRatingVotes,
+  genres,
+}: MovieInfoProps) => {
+  const classes = useStyles()
+
   return (
     <Box sx={{ width: "100%" }}>
-      <Typography variant="h5" className="movie-title">
-        {movieInfo?.title}
+      <Typography variant="h5" className={classes.movieTitle}>
+        {title}
       </Typography>
       <Grid container xs={12}>
         <Grid item xs={6}>
-          <Typography variant="body1">{movieInfo?.year}</Typography>
-          <Typography variant="body2">{movieInfo?.runtimeStr}</Typography>
+          <Typography variant="body1">{year}</Typography>
+          <Typography variant="body2">{runtimeStr}</Typography>
         </Grid>
         <Grid item xs={6}>
-          <Box className="icon">
-            <Box className="icon-left">
+          <Box className={classes.icon}>
+            <Box className={classes.iconLeft}>
               <Score />
               <Typography
                 variant="body2"
                 className="brand-text"
                 display="inline"
               >
-                {movieInfo?.imDbRating}
+                {imDbRating}
               </Typography>
             </Box>
-            <Box className="icon-right">
+            <Box className={classes.iconRight}>
               <Star />
               <Typography
                 variant="body2"
                 className="brand-text"
                 display="inline"
               >
-                {movieInfo?.imDbRatingVotes}
+                {imDbRatingVotes}
               </Typography>
             </Box>
           </Box>
-          <Box className="movie-genre">
+          <Box className={classes.movieGenre}>
             <Typography variant="body2" paragraph>
-              {movieInfo.genres}
+              {genres}
             </Typography>
           </Box>
         </Grid>

@@ -1,16 +1,13 @@
 import { FormControl, MenuItem, Select } from "@material-ui/core"
 import { useState } from "react"
-import { MovieInfo } from "../../../domain/movie_repository/model/movie_info_model"
+import { Country } from "../../../domain/movie_repository/model/movie_info_model"
 
-const SubtitleSelector = (movieInfo: MovieInfo) => {
-  const languages = movieInfo?.languageList ?? [
-    {
-      key: "none",
-      value: "N/A",
-    },
-  ]
+interface SubtitleSelectorProps {
+  languages: Country[]
+}
 
-  const [language, setLanguage] = useState(languages[0])
+const SubtitleSelector = ({ languages }: SubtitleSelectorProps) => {
+  const [language, setLanguage] = useState<string>(languages[0].key)
 
   const onSelectorChanged = (event) => {
     setLanguage(event.target.value)
