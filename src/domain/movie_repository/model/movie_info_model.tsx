@@ -23,6 +23,7 @@ export interface MovieInfoProps {
   imDbRatingVotes: string
   metacriticRating: string
   tagline: string
+  companies: string
 }
 
 interface Actor {
@@ -32,7 +33,7 @@ interface Actor {
   asCharacter: string
 }
 
-interface Country {
+export interface Country {
   key: string
   value: string
 }
@@ -62,6 +63,7 @@ export class MovieInfo {
   public imDbRatingVotes: string
   public metacriticRating: string
   public tagline: string
+  public companies: string
 
   constructor(props: MovieInfoProps) {
     this.id = props.id
@@ -88,5 +90,6 @@ export class MovieInfo {
     this.imDbRatingVotes = props.imDbRatingVotes
     this.metacriticRating = props.metacriticRating
     this.tagline = props.tagline
+    this.companies = props.companies
   }
 }
