@@ -49,37 +49,8 @@ const OverviewInfo = ({
       </Typography>
       <Grid container>
         <Grid item xs={6}>
-          <Typography variant="body1">{year}</Typography>
+          <Typography variant="h6">{year}</Typography>
           <Typography variant="body2">{runtimeStr}</Typography>
-        </Grid>
-        <Grid item xs={6}>
-          <Box className={classes.icon}>
-            <Box className={classes.iconLeft}>
-              <Score />
-              <Typography
-                variant="body2"
-                className="brand-text"
-                display="inline"
-              >
-                {imDbRating}
-              </Typography>
-            </Box>
-            <Box className={classes.iconRight}>
-              <Star />
-              <Typography
-                variant="body2"
-                className="brand-text"
-                display="inline"
-              >
-                {metacriticRating + "%"}
-              </Typography>
-            </Box>
-          </Box>
-          <Box className={classes.movieGenre}>
-            <Typography variant="body2" paragraph>
-              {genres}
-            </Typography>
-          </Box>
         </Grid>
       </Grid>
     </Box>

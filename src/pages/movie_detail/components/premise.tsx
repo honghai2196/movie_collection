@@ -1,6 +1,10 @@
 import { Typography } from "@material-ui/core"
 
-const Premise = (plot: string) => {
+interface PremiseProps {
+  plot: string
+}
+
+const Premise = ({ plot }: PremiseProps) => {
   return (
     <Typography className="movie-premise" variant="body2">
       {plot}

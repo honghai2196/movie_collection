@@ -16,17 +16,39 @@ import { fetchMovieInfo } from "../../domain/movie_repository/movie_api"
 import OverviewInfo from "./components/overview_info"
 import DetailInfo from "./components/detail_info"
 import { Movie } from "../../domain/movie_repository/model/movie_model"
+import OverviewRating from "./components/overview_rating"
+import Premise from "./components/premise"
+import CastList from "./components/cast_list"
 
 const useStyles = makeStyles((theme: Theme) => ({
-  movieContentWrapper: {},
+  movieContentWrapper: {
+    marginTop: theme.spacing(6),
+  },
+
   imageWrapper: {},
+
   overviewWrapper: {},
+
   detailWrapper: {},
+
+  movieOverview: {},
+
+  movieInfo: {
+    "& h6": {
+      fontWeight: "bold",
+    },
+  },
+
+  movieRating: {},
+
+  movieDetailed: {},
+
   premiseWrapper: {},
+
   castWrapper: {},
+
   image: {
     width: "70%",
-    marginTop: theme.spacing(4),
     marginLeft: theme.spacing(4),
   },
 }))
@@ -73,19 +95,33 @@ function MovieDetailPage() {
   return (
     <Fragment>
       <Box className={classes.movieContentWrapper}>
-        <Grid container spacing={4}>
-          <Grid item className={classes.imageWrapper} xs={4}>
+        <Grid container spacing={2}>
+          <Grid item className={classes.imageWrapper} lg={3}>
             <img
               src={movieInfo?.image ?? ""}
               alt={movieInfo?.fullTitle ?? ""}
               className={classes.image}
             />
           </Grid>
-          <Grid item className={classes.overviewWrapper} md={8}>
-            <OverviewInfo {...(movieInfo as MovieInfo)} />
-            <Divider />
-            <Grid container className={classes.detailWrapper}>
-              <DetailInfo {...(movieInfo as MovieInfo)} />
+
+          <Grid item className={classes.overviewWrapper} lg={9}>
+            <Grid container>
+              <Grid container className={classes.movieOverview} lg={12}>
+                <Grid item className={classes.movieInfo} lg={8}>
+                  <OverviewInfo {...(movieInfo as MovieInfo)} />
+                </Grid>
+                <Grid item className={classes.movieRating} lg={4}>
+                  <OverviewRating {...(movieInfo as MovieInfo)} />
+                </Grid>
+              </Grid>
+
+              {/* <Divider variant="middle" /> */}
+
+              <Grid container className={classes.movieDetailed} lg={12}>
+                <DetailInfo {...(movieInfo as MovieInfo)} />
+                <Premise plot={(movieInfo as MovieInfo).plot} />
+                <CastList {...(movieInfo as MovieInfo)} />
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
