@@ -1,5 +1,4 @@
-import { Box, Typography } from "@material-ui/core"
-import { MovieInfo } from "../../../domain/movie_repository/model/movie_info_model"
+import { Typography } from "@material-ui/core"
 
 const Premise = (plot: string) => {
   return (

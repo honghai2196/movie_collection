@@ -3,21 +3,22 @@ import { Movie } from "../../../domain/movie_repository/model/movie_model"
 import Image from "material-ui-image"
 import MovieHover from "./movie_hover"
 import { useHistory } from "react-router"
+import { ClassNameMap } from "@material-ui/styles"
 
-const setVoteClass = (vote: string) => {
+const setVoteClass = (vote: string, classes: ClassNameMap) => {
   if (parseFloat(vote) > 9) {
-    return "green"
+    return classes.green
   }
 
   if (parseFloat(vote) > 8.5) {
-    return "yellow"
+    return classes.yellow
   }
 
   if (parseFloat(vote) > 8) {
-    return "orange"
+    return classes.orange
   }
 
-  return "red"
+  return classes.red
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -35,25 +36,30 @@ const useStyles = makeStyles((theme: Theme) => ({
       },
     },
   },
+
   img: {
     maxWidth: "100%",
   },
+
   movieInfo: {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
     padding: "1rem",
   },
+
   movieInfo_movieTitle: {
     color: "rgb(255, 255, 255)",
     margin: 0,
   },
+
   movieInfo_movieRating: {
     backgroundColor: "#22254b",
     borderRadius: "5px",
     padding: "0.5rem",
     fontWeight: "bold",
   },
+
   movieOver: {
     backgroundColor: "white",
     color: "black",
@@ -70,6 +76,22 @@ const useStyles = makeStyles((theme: Theme) => ({
     "& h5": {
       fontWeight: "bolder",
     },
+  },
+
+  green: {
+    color: "green",
+  },
+
+  yellow: {
+    color: "yellow",
+  },
+
+  orange: {
+    color: "orange",
+  },
+
+  red: {
+    color: "red",
   },
 }))
 
@@ -98,7 +120,7 @@ const MovieCard = (movie: Movie) => {
             className={
               classes.movieInfo_movieRating +
               " " +
-              setVoteClass(movie.imDbRating)
+              setVoteClass(movie.imDbRating, classes)
             }
           >
             {movie.imDbRating}

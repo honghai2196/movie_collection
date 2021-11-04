@@ -6,7 +6,7 @@ import {
   makeStyles,
   Theme,
 } from "@material-ui/core"
-import React, { Fragment, useEffect, useState } from "react"
+import { Fragment, useEffect, useState } from "react"
 import { useLocation } from "react-router"
 import {
   MovieInfo,

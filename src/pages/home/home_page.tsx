@@ -6,7 +6,6 @@ import {
 } from "../../domain/movie_repository/model/movie_model"
 import { Box, Grid } from "@material-ui/core"
 import MovieCard from "./components/movie_card"
-import "./home_page.css"
 
 function HomePage() {
   const [movies, setMovies] = useState<Movie[]>([])
