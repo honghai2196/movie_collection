@@ -1,5 +1,13 @@
-import { Box, Divider, Grid, makeStyles, Theme } from "@material-ui/core"
-import React, { useEffect, useState } from "react"
+import {
+  Box,
+  CircularProgress,
+  Divider,
+  Grid,
+  makeStyles,
+  Theme,
+  Typography,
+} from "@material-ui/core"
+import React, { Fragment, useEffect, useState } from "react"
 import { useLocation } from "react-router"
 import {
   MovieInfo,
@@ -8,6 +16,8 @@ import {
 import { fetchMovieInfo } from "../../domain/movie_repository/movie_api"
 import OverviewInfo from "./components/overview_info"
 import DetailInfo from "./components/detail_info"
+import { Movie } from "../../domain/movie_repository/model/movie_model"
+import { width } from "@material-ui/system"
 
 const useStyles = makeStyles((theme: Theme) => ({
   movieContentWrapper: {},
@@ -19,14 +29,15 @@ const useStyles = makeStyles((theme: Theme) => ({
 }))
 
 function MovieDetailPage() {
-  const movie = useLocation<MovieInfo>()
+  const movie = useLocation<Movie>()
   const [movieInfo, setMovieInfo] = useState<MovieInfo>()
+
+  const classes = useStyles()
 
   useEffect(() => {
     async function getMovieInfo() {
-      const id = (movie.state as MovieInfo).id
+      const id = (movie.state as Movie).id
 
-      console.log("=== GET MOVIE DETAIL INFO WITH ID = " + id + " ===")
       const movieInfoResponse: MovieInfoProps = await fetchMovieInfo(id)
       const movieInfo = new MovieInfo(movieInfoResponse)
 
@@ -36,12 +47,28 @@ function MovieDetailPage() {
     }
 
     getMovieInfo()
+    return
   }, [])
 
-  const classes = useStyles()
+  if (movieInfo === undefined) {
+    return (
+      <Fragment>
+        <CircularProgress
+          style={{
+            position: "fixed",
+            left: "50%",
+            top: "35%",
+            display: "none",
+            height: "31px",
+            width: "31px",
+          }}
+        />
+      </Fragment>
+    )
+  }
 
   return (
-    <React.Fragment>
+    <Fragment>
       <Box className={classes.movieContentWrapper}>
         <Grid container spacing={4}>
           <Grid item className={classes.imageWrapper} xs={4}>
@@ -59,8 +86,8 @@ function MovieDetailPage() {
           </Grid>
         </Grid>
       </Box>
-    </React.Fragment>
+    </Fragment>
   )
 }
 
-export default React.memo(MovieDetailPage)
+export default MovieDetailPage

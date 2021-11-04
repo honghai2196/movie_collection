@@ -7,7 +7,7 @@ interface SubtitleSelectorProps {
 }
 
 const SubtitleSelector = ({ languages }: SubtitleSelectorProps) => {
-  const [language, setLanguage] = useState<string>(languages[0].key)
+  const [language, setLanguage] = useState<string>(languages[0]?.key ?? "")
 
   const onSelectorChanged = (event) => {
     setLanguage(event.target.value)

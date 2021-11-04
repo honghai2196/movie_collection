@@ -26,7 +26,7 @@ export interface MovieInfoProps {
   companies: string
 }
 
-interface Actor {
+export interface Actor {
   id: string
   image: string
   name: string

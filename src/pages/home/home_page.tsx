@@ -12,7 +12,7 @@ function HomePage() {
   const [movies, setMovies] = useState<Movie[]>([])
 
   useEffect(() => {
-    const getMovies = async () => {
+    async function getMovies() {
       const moviesResponse: [MovieProps] = await getAllMovies()
       const listMovies = moviesResponse.map((item) => new Movie(item))
 
@@ -35,4 +35,4 @@ function HomePage() {
   )
 }
 
-export default React.memo(HomePage)
+export default HomePage

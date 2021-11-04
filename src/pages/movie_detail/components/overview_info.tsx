@@ -14,12 +14,14 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   iconLeft: {
     "& path": {
-      color: "orange",
+      fill: "blue",
+      color: "blue",
     },
   },
   iconRight: {
     "& path": {
-      color: "blue",
+      fill: "green",
+      color: "green",
     },
   },
   movieGenre: {
@@ -35,7 +37,7 @@ const OverviewInfo = ({
   year,
   runtimeStr,
   imDbRating,
-  imDbRatingVotes,
+  metacriticRating,
   genres,
 }: MovieInfoProps) => {
   const classes = useStyles()
@@ -45,7 +47,7 @@ const OverviewInfo = ({
       <Typography variant="h5" className={classes.movieTitle}>
         {title}
       </Typography>
-      <Grid container xs={12}>
+      <Grid container>
         <Grid item xs={6}>
           <Typography variant="body1">{year}</Typography>
           <Typography variant="body2">{runtimeStr}</Typography>
@@ -69,7 +71,7 @@ const OverviewInfo = ({
                 className="brand-text"
                 display="inline"
               >
-                {imDbRatingVotes}
+                {metacriticRating + "%"}
               </Typography>
             </Box>
           </Box>
