@@ -24,6 +24,11 @@ const useStyles = makeStyles((theme: Theme) => ({
   detailWrapper: {},
   premiseWrapper: {},
   castWrapper: {},
+  image: {
+    width: "70%",
+    marginTop: theme.spacing(4),
+    marginLeft: theme.spacing(4),
+  },
 }))
 
 function MovieDetailPage() {
@@ -73,6 +78,7 @@ function MovieDetailPage() {
             <img
               src={movieInfo?.image ?? ""}
               alt={movieInfo?.fullTitle ?? ""}
+              className={classes.image}
             />
           </Grid>
           <Grid item className={classes.overviewWrapper} md={8}>
