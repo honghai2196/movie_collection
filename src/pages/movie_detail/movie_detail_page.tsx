@@ -23,7 +23,7 @@ function MovieDetailPage() {
   const [movieInfo, setMovieInfo] = useState<MovieInfo>()
 
   useEffect(() => {
-    const getMovieInfo = async () => {
+    async function getMovieInfo() {
       const id = (movie.state as MovieInfo).id
 
       console.log("=== GET MOVIE DETAIL INFO WITH ID = " + id + " ===")
